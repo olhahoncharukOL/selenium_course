@@ -1,4 +1,4 @@
-package com.olga;
+﻿package com.olga;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.*;
@@ -18,7 +18,7 @@ public class SeleniumTestOne {
 
     @Before
     public void start() {
-        System.setProperty("webdriver.chrome.driver", "C:\\TestTools\\chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "C:\\TestTools\\chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver,10);
     }
