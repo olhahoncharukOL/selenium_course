@@ -5,8 +5,6 @@ package com.olga;
  */
 public class Program {
     public static void main(String[]args) {
-        Calculator c= new Calculator();
-        int res = c.add(-9,19);
-        System.out.print(res);
+
     }
 }

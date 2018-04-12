@@ -1,4 +1,3 @@
 # selenium_course
 Selenium WebDriver course
-My first ch
-hjfgkhfhgv
+My first selenium project
