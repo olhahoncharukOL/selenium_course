@@ -13,7 +13,7 @@ public class LogginTest extends SetDriver {
         driver.get("http://localhost/litecart/admin/login.php");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
-        driver.findElement(By.name("loggin")).click();
+        driver.findElement(By.name("login")).click();
 
      /*   if (!driver.getCurrentUrl().equals("http://localhost/litecart/admin/"))
         {
