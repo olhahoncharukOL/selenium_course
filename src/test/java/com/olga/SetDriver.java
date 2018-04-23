@@ -1,26 +1,46 @@
 package com.olga;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by User on 12.04.2018.
  */
 public class SetDriver {
-    public WebDriver driver;
+    public static WebDriver driver;
     public WebDriverWait wait;
 
     @Before
     public void start() {
-        //driver = new ChromeDriver();
-        driver = new FirefoxDriver();
-        //driver = new InternetExplorerDriver();
-        wait = new WebDriverWait(driver,15);
+        if (driver==null){
+            driver = new ChromeDriver();
+            wait = new WebDriverWait(driver, 30);
+        }
+      //  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        }
+        //FirefoxOptions options = new FirefoxOptions();
+       // options.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Firefox Nightly\\firefox.exe")));
+       // driver = new FirefoxDriver(options);
+        //C:\Program Files\Firefox Nightly
+       // driver = new InternetExplorerDriver();
+
+       // old version of FireFox
+      /* FirefoxOptions options = new FirefoxOptions();
+        options.setCapability("marionette", false);
+        driver = new FirefoxDriver(options); */
     }
     @After
     public void stop() {

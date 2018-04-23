@@ -9,18 +9,17 @@ import org.openqa.selenium.By;
  */
 public class LogginTest extends SetDriver {
     @Test
-    public void logginTest() {
-        driver.get("http://localhost/litecart/admin/login.php");
+    public void loggin() {
+        driver.get("http://localhost/litecart/admin/");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).click();
 
-     /*   if (!driver.getCurrentUrl().equals("http://localhost/litecart/admin/"))
-        {
+        if (!driver.getCurrentUrl().equals("http://localhost/litecart/admin/")) {
             AssertionError assertError = new AssertionError();
-            System.out.println("Test is failed: " +assertError.getMessage());
+            System.out.println("Test is failed: " + assertError.getMessage());
             System.out.println("Page title is " + driver.getCurrentUrl());
             Assert.fail();
-        } */
+        }
     }
 }

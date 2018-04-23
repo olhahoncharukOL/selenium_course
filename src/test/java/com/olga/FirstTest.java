@@ -11,8 +11,8 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 public class FirstTest extends SetDriver{
     @Test
-    public void logginTest() {
-        driver.get("http://google.com");
+    public void firstTest()  {
+        driver.navigate().to("http://google.com");
         WebElement element = driver.findElement(By.name("q"));
         // Enter something to search for
         element.sendKeys("my first search");
