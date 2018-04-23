@@ -63,38 +63,3 @@ public class MenuTest extends SetDriver{
         return menuItemSubitems;
     }
     }
-
-        /*
-        for (int i = 0; i < menuList.size(); i++) {
-            menuList = driver.findElements(By.cssSelector("ul#box-apps-menu li#app-"));
-            WebElement menuItem = menuList.get(i);
-
-            menuItem.click();
-
-            if (driver.getTitle()==""){
-                AssertionError assertError = new AssertionError();
-                System.out.println("FAILED. Found page without title. Page URL is " + driver.getCurrentUrl()+ " ." +assertError.getMessage());
-                Assert.fail();
-            }
-            System.out.println("Page title is " + driver.getTitle());
-
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-            if ((driver.findElements(By.cssSelector("ul.docs li")).size() > 0)) {
-                List<WebElement> subMenuList = driver.findElements(By.cssSelector("ul#box-apps-menu li li"));
-
-                for (int j = 1; j < subMenuList.size(); j++) {
-                    subMenuList = driver.findElements(By.cssSelector("ul#box-apps-menu li li"));
-                    WebElement subMenuItem = subMenuList.get(j);
-
-                    subMenuItem.click();
-
-                    if (driver.getTitle()==""){
-                        AssertionError assertError = new AssertionError();
-                        System.out.println("FAILED. Found page without title. Page URL is " + driver.getCurrentUrl()+ " ." +assertError.getMessage());
-                        Assert.fail();
-                    }
-                    System.out.println("Page title is " + driver.getTitle());
-
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-                } */
