@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by User on 18.04.2018.
  */
-public class MenuTest extends SetDriver {
+public class MenuTest extends TestBasis {
     List<WebElement> menuListOfItems;
     WebElement menuItem;
     List<WebElement> menuItemSubitems;
@@ -59,25 +59,15 @@ public class MenuTest extends SetDriver {
     }
 
     public List<WebElement> findMenuListOfItems() {
-        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         menuListOfItems = driver.findElements(By.cssSelector("#app-"));
         return menuListOfItems;
     }
 
     public List<WebElement> findMenuItemSubitems() {
-        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
         menuItemSubitems = driver.findElements(By.cssSelector("#box-apps-menu li li"));
         return menuItemSubitems;
     }
 
-    public boolean isElementPresent(By locator) {
-        try {
-            driver.findElement(locator);
-            return true;
-        } catch (NoSuchElementException e) {
-            return  false;
-        }
-    }
 }
 
 

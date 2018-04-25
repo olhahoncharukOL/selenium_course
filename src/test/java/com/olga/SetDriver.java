@@ -21,21 +21,20 @@ import java.util.concurrent.TimeUnit;
  */
 public class SetDriver {
     public static WebDriver driver;
-    public WebDriverWait wait;
+    public static WebDriverWait wait;
 
     @Before
     public void start() {
         if (driver==null){
             driver = new ChromeDriver();
-            wait = new WebDriverWait(driver, 30);
+            //driver = new InternetExplorerDriver();
+           /* FirefoxOptions options = new FirefoxOptions();
+             options.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Firefox Nightly\\firefox.exe")));
+             driver = new FirefoxDriver(options); */
+         //    driver = new InternetExplorerDriver();
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+             wait = new WebDriverWait(driver, 30);
         }
-      //  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        }
-        //FirefoxOptions options = new FirefoxOptions();
-       // options.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Firefox Nightly\\firefox.exe")));
-       // driver = new FirefoxDriver(options);
-        //C:\Program Files\Firefox Nightly
-       // driver = new InternetExplorerDriver();
 
        // old version of FireFox
       /* FirefoxOptions options = new FirefoxOptions();
