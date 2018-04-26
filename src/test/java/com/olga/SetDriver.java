@@ -29,20 +29,18 @@ public class SetDriver {
     public void start() {
         if (driver==null){
             driver = new ChromeDriver();
-            jse = (JavascriptExecutor) driver;
-            //driver = new InternetExplorerDriver();
-           /* FirefoxOptions options = new FirefoxOptions();
+         //   driver = new FirefoxDriver();
+           // driver = new InternetExplorerDriver();
+
+          /*  FirefoxOptions options = new FirefoxOptions();
              options.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Firefox Nightly\\firefox.exe")));
+            options.setCapability("marionette", true);
              driver = new FirefoxDriver(options); */
-         //    driver = new InternetExplorerDriver();
-            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-             wait = new WebDriverWait(driver, 30);
         }
 
-       // old version of FireFox
-      /* FirefoxOptions options = new FirefoxOptions();
-        options.setCapability("marionette", false);
-        driver = new FirefoxDriver(options); */
+        //jse = (JavascriptExecutor) driver;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, 30);
     }
     @After
     public void stop() {
