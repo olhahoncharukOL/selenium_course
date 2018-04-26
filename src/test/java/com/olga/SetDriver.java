@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -21,12 +22,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class SetDriver {
     public static WebDriver driver;
+    public static JavascriptExecutor jse;
     public static WebDriverWait wait;
 
     @Before
     public void start() {
         if (driver==null){
             driver = new ChromeDriver();
+            jse = (JavascriptExecutor) driver;
             //driver = new InternetExplorerDriver();
            /* FirefoxOptions options = new FirefoxOptions();
              options.setBinary(new FirefoxBinary(new File("C:\\Program Files\\Firefox Nightly\\firefox.exe")));
