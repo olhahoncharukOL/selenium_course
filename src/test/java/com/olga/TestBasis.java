@@ -3,6 +3,7 @@ package com.olga;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +13,9 @@ import java.util.NoSuchElementException;
  * Created by User on 25.04.2018.
  */
 public class TestBasis extends SetDriver{
+    static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    static final String IN = "0123456789";
+    static SecureRandom rnd = new SecureRandom();
 
     public boolean isCollectionTextSorted(List<WebElement> list) {
         List<String> listToString = new ArrayList<String>();
@@ -37,14 +41,45 @@ public class TestBasis extends SetDriver{
         } catch (NoSuchElementException e) {
             return  false;
         }
+
     }
 
-    public boolean isElementsPresent(By locator) {
+    public boolean areElementsPresent(By locator) {
             List<WebElement> list= driver.findElements(locator);
             if (list.size()==0) {
                 return false;
             }
             return  true;
 
+    }
+
+    public String randomEmailGenerator( int len, String domain ){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString() + "@" +domain;
+    }
+
+    public String randomStringGenerator( int len ){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
+        return sb.toString();
+    }
+
+    public String randomNumberGenerator( int len ){
+        StringBuilder sb = new StringBuilder( len );
+        for( int i = 0; i < len; i++ )
+            sb.append( IN.charAt( rnd.nextInt(IN.length()) ) );
+        return sb.toString();
+    }
+
+    public void logout(List<WebElement> links, String logout) {
+
+        for (WebElement link: links) {
+            if ( link.getAttribute("textContent").equals(logout)) {
+                link.click();
+            }
+        }
     }
 }

@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.security.SecureRandom;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
