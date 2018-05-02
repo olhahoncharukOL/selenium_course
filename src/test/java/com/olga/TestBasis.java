@@ -1,7 +1,10 @@
 package com.olga;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -16,6 +19,8 @@ public class TestBasis extends SetDriver{
     static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     static final String IN = "0123456789";
     static SecureRandom rnd = new SecureRandom();
+    static List<WebElement> menuListOfItems;
+    static List<WebElement> menuItemSubitems;
 
     public boolean isCollectionTextSorted(List<WebElement> list) {
         List<String> listToString = new ArrayList<String>();
@@ -34,14 +39,13 @@ public class TestBasis extends SetDriver{
         return true;
     }
 
-    public boolean isElementPresent(By locator) {
+    public boolean isElementPresent( By locator) {
         try {
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException e) {
             return  false;
         }
-
     }
 
     public boolean areElementsPresent(By locator) {
@@ -50,7 +54,6 @@ public class TestBasis extends SetDriver{
                 return false;
             }
             return  true;
-
     }
 
     public String randomEmailGenerator( int len, String domain ){
@@ -81,5 +84,22 @@ public class TestBasis extends SetDriver{
                 link.click();
             }
         }
+    }
+
+    public List<WebElement> findMenuListOfItems() {
+        menuListOfItems = driver.findElements(By.cssSelector("#app-"));
+        return menuListOfItems;
+    }
+
+    public List<WebElement> findMenuItemSubitems() {
+        menuItemSubitems = driver.findElements(By.cssSelector("#box-apps-menu li li"));
+        return menuItemSubitems;
+    }
+
+    public void setDatepicker(WebDriver driver, String cssSelector, String date) {
+        new WebDriverWait(driver, 30000).until(
+                (WebDriver d) -> d.findElement(By.cssSelector(cssSelector)).isDisplayed());
+        JavascriptExecutor.class.cast(driver).executeScript(
+                String.format("$('%s').datepicker('setDate', '%s')", cssSelector, date));
     }
 }

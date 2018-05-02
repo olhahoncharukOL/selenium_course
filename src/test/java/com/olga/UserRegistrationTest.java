@@ -47,34 +47,36 @@ public class UserRegistrationTest extends TestBasis{
        }
 
      WebElement createAccount= driver.findElement(By.cssSelector("#create-account"));
-      //First Name ++
+      //First Name
        createAccount.findElement(By.cssSelector("input[name=firstname]")).sendKeys(randomStringGenerator(5));
-       //Last Name ++
+       //Last Name
         createAccount.findElement(By.cssSelector("input[name=lastname]")).sendKeys(randomStringGenerator(4));
-        //Address 1 ++
+        //Address 1
         createAccount.findElement(By.cssSelector("input[name=address1]")).sendKeys(randomStringGenerator(7)+", "+randomNumberGenerator(2));
-       //Postcode ++
+       //Postcode
         createAccount.findElement(By.cssSelector("input[name=postcode]")).sendKeys(randomNumberGenerator(5));
-       //City ++
+       //City
         createAccount.findElement(By.cssSelector("input[name=city]")).sendKeys(randomStringGenerator(7));
        //Country
         Select selectCountry = new Select(createAccount.findElement(By.cssSelector("select[name=country_code]")));
         selectCountry.selectByValue("US");
        //Zone/State/Province
-        Select selectState = new Select(createAccount.findElement(By.cssSelector("select[name=zone_code]")));
-        selectState.selectByIndex(0);
-        //Email ++
+        if(isElementPresent(By.cssSelector("#create-account select[name=zone_code]"))){
+            Select selectState = new Select(createAccount.findElement(By.cssSelector("select[name=zone_code]")));
+            selectState.selectByIndex(0);
+        }
+        //Email
         String eMail= randomEmailGenerator(6, "gmail.com");
         createAccount.findElement(By.cssSelector("input[name=email]")).sendKeys(eMail);
        //Phone
         WebElement phone = createAccount.findElement(By.cssSelector("input[name=phone]"));
         phone.sendKeys(Keys.HOME+randomNumberGenerator(8));
-       //Desired Password ++
+       //Desired Password
        String password = randomNumberGenerator(1)+randomStringGenerator(3)+randomNumberGenerator(2)+randomStringGenerator(3);
         createAccount.findElement(By.cssSelector("input[name=password]")).sendKeys(password);
-       //Confirm Password ++
+       //Confirm Password
         createAccount.findElement(By.cssSelector("input[name=confirmed_password]")).sendKeys(password);
-      // Create Account ++
+      // Create Account
        createAccount.findElement(By.cssSelector("button[name=create_account]")).click();
 
 
@@ -82,19 +84,14 @@ public class UserRegistrationTest extends TestBasis{
             System.out.println("after reggistration redirect to the wrong page");
             Assert.fail();
         }
-
         // Logout first time
         logout(driver.findElements(By.cssSelector("#box-account a")),"Logout");
-
         //Loggin
         WebElement accountBox = driver.findElement(By.cssSelector("#box-account-login"));
         accountBox.findElement(By.cssSelector("input[name=email]")).sendKeys(eMail);
         accountBox.findElement(By.cssSelector("input[name=password]")).sendKeys(password);
         accountBox.findElement(By.cssSelector("button[name=login]")).click();
-
         // Logout second time
         logout(driver.findElements(By.cssSelector("#box-account a")),"Logout");
     }
-
-
 }

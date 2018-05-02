@@ -13,16 +13,16 @@ import java.util.concurrent.TimeUnit;
  * Created by User on 18.04.2018.
  */
 public class MenuTest extends TestBasis {
-    List<WebElement> menuListOfItems;
     WebElement menuItem;
-    List<WebElement> menuItemSubitems;
     WebElement menuSubItem;
 
     @Test
     public void testMenu() {
         LogginTest test = new LogginTest();
         test.loggin();
+
         findMenuListOfItems();
+        System.out.println(menuListOfItems.get(1).getAttribute("textContent"));
         for (int i = 0; i < menuListOfItems.size(); i++) {
             findMenuListOfItems();
             menuItem = menuListOfItems.get(i);
@@ -57,17 +57,6 @@ public class MenuTest extends TestBasis {
             }
         }
     }
-
-    public List<WebElement> findMenuListOfItems() {
-        menuListOfItems = driver.findElements(By.cssSelector("#app-"));
-        return menuListOfItems;
-    }
-
-    public List<WebElement> findMenuItemSubitems() {
-        menuItemSubitems = driver.findElements(By.cssSelector("#box-apps-menu li li"));
-        return menuItemSubitems;
-    }
-
 }
 
 

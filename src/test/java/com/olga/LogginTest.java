@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 /**
  * Created by User on 12.04.2018.
  */
-public class LogginTest extends SetDriver {
+public class LogginTest extends TestBasis {
     @Test
     public void loggin() {
         driver.get("http://localhost/litecart/admin/");
