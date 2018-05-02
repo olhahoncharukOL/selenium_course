@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -104,7 +105,7 @@ public class addItemTest extends TestBasis{
         driver.findElement(By.cssSelector("a[href='#tab-information']")).click();
         wait = new WebDriverWait(driver, 15);
 
-        WebElement tabInformation = driver.findElement(By.cssSelector("#tab-information"));
+        WebElement tabInformation = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#tab-information")));
 
         Select manufacturerId = new Select(tabInformation.findElement(By.cssSelector("select[name=manufacturer_id]")));
         manufacturerId.selectByValue("1");
@@ -118,7 +119,7 @@ public class addItemTest extends TestBasis{
     //Prices
         driver.findElement(By.cssSelector("a[href='#tab-prices']")).click();
         wait = new WebDriverWait(driver, 15);
-       WebElement tabPrices =  driver.findElement(By.cssSelector("#tab-prices"));
+       WebElement tabPrices =  wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#tab-prices")));
 
        tabPrices.findElement(By.cssSelector("input[name=purchase_price]")).sendKeys(randomNumberGenerator(2));
        Select purchasePriceCurrencyCode = new Select(tabPrices.findElement(By.cssSelector("select[name=purchase_price_currency_code]")));
