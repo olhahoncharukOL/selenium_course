@@ -121,11 +121,13 @@ public class addItemTest extends TestBasis{
         wait = new WebDriverWait(driver, 15);
        WebElement tabPrices =  wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#tab-prices")));
 
+       tabPrices.findElement(By.cssSelector("input[name=purchase_price]")).clear();
        tabPrices.findElement(By.cssSelector("input[name=purchase_price]")).sendKeys(randomNumberGenerator(2));
        Select purchasePriceCurrencyCode = new Select(tabPrices.findElement(By.cssSelector("select[name=purchase_price_currency_code]")));
-       purchasePriceCurrencyCode.selectByValue("EUR");
+       purchasePriceCurrencyCode.selectByValue("USD");
 
-        tabPrices.findElement(By.cssSelector("input[name='prices[EUR]']")).sendKeys(randomNumberGenerator(2));
+        tabPrices.findElement(By.cssSelector("input[name='prices[USD]']")).clear();
+        tabPrices.findElement(By.cssSelector("input[name='prices[USD]']")).sendKeys(randomNumberGenerator(2));
 
         driver.findElement(By.cssSelector("button[name=save]")).click();
 
@@ -138,7 +140,7 @@ public class addItemTest extends TestBasis{
        List<WebElement> table = driver.findElements(By.cssSelector(".dataTable tr a"));
 
         if (!isElementInDB(table)) {
-            System.out.println("Our test element is not in the DB");
+            System.out.println("Our test element is not saved");
             Assert.fail();
         }
     }

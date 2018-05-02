@@ -48,12 +48,30 @@ public class TestBasis extends SetDriver{
         }
     }
 
+    public boolean isElementPresent( WebElement element, By locator) {
+        try {
+            element.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return  false;
+        }
+    }
+
     public boolean areElementsPresent(By locator) {
             List<WebElement> list= driver.findElements(locator);
             if (list.size()==0) {
                 return false;
             }
             return  true;
+    }
+
+
+    public boolean areElementsPresent(WebElement element, By locator) {
+        List<WebElement> list= element.findElements(locator);
+        if (list.size()==0) {
+            return false;
+        }
+        return  true;
     }
 
     public String randomEmailGenerator( int len, String domain ){
