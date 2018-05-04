@@ -10,7 +10,9 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.NoSuchElementException;
 
 /**
  * Created by User on 25.04.2018.
@@ -40,15 +42,20 @@ public class TestBasis extends SetDriver{
     }
 
     public boolean isElementPresent( By locator) {
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         try {
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException e) {
-            return  false;
+            return false;
+        }
+        finally {
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
     }
 
     public boolean isElementPresent( WebElement element, By locator) {
+
         try {
             element.findElement(locator);
             return true;

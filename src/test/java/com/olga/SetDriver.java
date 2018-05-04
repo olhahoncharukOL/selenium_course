@@ -39,12 +39,12 @@ public class SetDriver {
         }
 
         //jse = (JavascriptExecutor) driver;
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 30);
     }
     @After
     public void stop() {
-        driver.quit();
-        driver= null;
+//        driver.quit();
+//        driver= null;
     }
 }

@@ -103,7 +103,6 @@ public class addItemTest extends TestBasis{
 
     //Information
         driver.findElement(By.cssSelector("a[href='#tab-information']")).click();
-        wait = new WebDriverWait(driver, 15);
 
         WebElement tabInformation = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#tab-information")));
 
@@ -118,7 +117,7 @@ public class addItemTest extends TestBasis{
 
     //Prices
         driver.findElement(By.cssSelector("a[href='#tab-prices']")).click();
-        wait = new WebDriverWait(driver, 15);
+
        WebElement tabPrices =  wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#tab-prices")));
 
        tabPrices.findElement(By.cssSelector("input[name=purchase_price]")).clear();
