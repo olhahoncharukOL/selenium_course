@@ -2,13 +2,10 @@ package com.olga;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.*;
 
 /**
  * Created by User on 05.05.2018.
@@ -16,7 +13,7 @@ import java.util.function.Function;
 public class LinksInNewWindowTest extends TestBasis {
     private String newWindow;
     @Test
-    public void openLinksInNewWindow() throws InterruptedException {
+    public void openLinksInNewWindow(){
     LogginTest test = new LogginTest();
     test.loggin();
     driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
