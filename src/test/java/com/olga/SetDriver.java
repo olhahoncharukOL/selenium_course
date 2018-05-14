@@ -12,9 +12,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,8 +29,12 @@ public class SetDriver {
     public static WebDriverWait wait;
 
     @Before
-    public void start() {
+    public void start() throws MalformedURLException {
         if (driver==null){
+          //  FirefoxOptions options = new FirefoxOptions();
+          //  options.setCapability("marionette", true);
+        //    WebDriver driver = new RemoteWebDriver(new URL("http://192.168.56.102:4445/wd/hub"),options);
+
             driver = new ChromeDriver();
          //   driver = new FirefoxDriver();
            // driver = new InternetExplorerDriver();
@@ -39,12 +46,14 @@ public class SetDriver {
         }
 
         //jse = (JavascriptExecutor) driver;
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 30);
     }
     @After
     public void stop() {
-        driver.quit();
-        driver= null;
+        if (driver!=null) {
+            driver.quit();
+            driver= null;
+        }
     }
 }
