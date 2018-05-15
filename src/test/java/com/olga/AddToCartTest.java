@@ -9,10 +9,18 @@ import java.util.List;
 
 /**
  * Created by User on 02.05.2018.
+ *
+ * Сделайте сценарий для добавления товаров в корзину и удаления товаров из корзины.
+ 1) открыть главную страницу
+ 2) открыть первый товар из списка
+ 2) добавить его в корзину (при этом может случайно добавиться товар, который там уже есть, ничего страшного)
+ 3) подождать, пока счётчик товаров в корзине обновится
+ 4) вернуться на главную страницу, повторить предыдущие шаги ещё два раза, чтобы в общей сложности в корзине было 3 единицы товара
+
+ 5) открыть корзину (в правом верхнем углу кликнуть по ссылке Checkout)
+ 6) удалить все товары из корзины один за другим, после каждого удаления подождать, пока внизу обновится таблица
  */
 public class AddToCartTest extends TestBasis{
-    static WebElement firstProduct;
-    static  WebElement productPriceElement;
     @Test
     public void addItemToCart() {
         driver.get("http://localhost/litecart/en/");
@@ -57,6 +65,7 @@ public class AddToCartTest extends TestBasis{
         String sumBeforeStr =sumBefore.substring(1,sumBefore.length());
         Integer sumBeforeInt = Integer.parseInt(sumBeforeStr);
         //Product price
+        WebElement productPriceElement;
         if (isElementPresent(By.cssSelector("#box-product span.price"))){
             productPriceElement = driver.findElement(By.cssSelector("#box-product span.price"));
         } else {
@@ -82,7 +91,7 @@ public class AddToCartTest extends TestBasis{
     }
 
     public void addProductToCart() {
-        firstProduct = driver.findElement(By.cssSelector(".product"));
+        WebElement firstProduct = driver.findElement(By.cssSelector(".product"));
         firstProduct.click();
         if (isElementPresent(By.cssSelector("#box-product select[name='options[Size]']"))) {
             Select size = new Select(driver.findElement(By.cssSelector("#box-product select[name='options[Size]']")));
