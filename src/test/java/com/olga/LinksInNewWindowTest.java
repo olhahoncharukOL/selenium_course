@@ -26,6 +26,7 @@ public class LinksInNewWindowTest extends TestBasis {
             externalLinks.get(i).click();
             wait.until(ExpectedConditions.numberOfWindowsToBe(2));
             Set<String> allWindows = driver.getWindowHandles();
+
             for (String w: allWindows) {
                 if (!w.equals(mainWindow)) {
                   newWindow = w;

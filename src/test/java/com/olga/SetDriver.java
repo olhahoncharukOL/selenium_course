@@ -51,9 +51,9 @@ public class SetDriver {
     }
     @After
     public void stop() {
-//        if (driver!=null) {
-//            driver.quit();
-//            driver= null;
-//        }
+        if (driver!=null) {
+            driver.quit();
+            driver= null;
+       }
     }
 }
