@@ -1,4 +1,7 @@
 # selenium_course
+
+Please find Page Object Examples in the /test/java/com/olga/tests dir
+
 selenium_course - olga goncharuk
 
 added L2_task1 - Задание 1. Подготовьте инфраструктуру - see FirstTest.java
